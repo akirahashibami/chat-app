@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ActionCableを用いたチャットアプリです
 
-Things you may want to cover:
+## 環境
 
-* Ruby version
+- ruby 2.5.7
+- rails 5.2.4
+- SQL sqllite3
 
-* System dependencies
+開発環境
+- Virtualbox
+- Vagrant
 
-* Configuration
+railsのバージョンが5と6では書き方が変わるようです  
+今回5で行っています
 
-* Database creation
+## ER図
 
-* Database initialization
+## 機能
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- ユーザー登録、ログイン機能(devise)
+- チャット機能(ActionCable)
