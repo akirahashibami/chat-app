@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'top#top'
+  post '/top/guest_sign_in', to: 'top#new_guest'
 
   devise_for :users, controllers:{
     sessions: 'users/sessions',
