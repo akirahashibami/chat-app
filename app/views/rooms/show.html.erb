@@ -1,9 +1,0 @@
-<h2 id="user-chat-room" data-room="<%= @room.id %>"><%= @user.name %> さんとのチャットルーム</h2>
-
-<% @messages.each do |message| %>
-  <p><%= message.message %></p>
-<% end %>
-
-<div id="add-message"></div>
-
-<input type="text" data-user="<%= current_user.id %>" data-behavior="room_speaker">
