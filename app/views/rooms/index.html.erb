@@ -5,7 +5,7 @@
   </p>
 <% end %>
 
-<h2>Chat Room</h2>
+<h2>All Chats</h2>
 
 <div class="message">
   <%= render partial: 'rooms/messages', locals: { messages: @messages} %>
@@ -15,3 +15,49 @@
 
 <!-- 投稿フォーム -->
 <input type="text" data-behavior="room_speaker" data-user=<%= current_user.id %>>
+
+<div class="follow-wraper">
+  <div class="all-user">
+    <h4>ユーザー 一覧</h4>
+    <% @users.each do |user| %>
+      <ul>
+        <li>
+          <%= user.name %>
+          <% if user.followed_by?(current_user) %>
+            <span>フォロー済み</span>
+          <% else %>
+            <span><%= link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="following-user">
+    <h4>フォロー中ユーザー</h4>
+    <ul>
+      <% @followings.each do |f| %>
+        <% if current_user.followed_by?(f) %>
+          <li>
+            <%= f.name %>
+            <%= link_to "チャットルームへ", room_path(f) %>
+          </li>
+        <% else %>
+          <li>
+            <%= f.name %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="followed-user">
+    <h4>あなたをフォローしているユーザー</h4>
+    <ul>
+      <% @followers.each do |f| %>
+        <li>
+          <%= f.name %>
+          <span><%= link_to "フォローする", user_relationships_path(f.id), method: :post %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
