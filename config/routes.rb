@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'top#top'
+
   devise_for :users, controllers:{
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
-  devise_scope :user do
-    root :to => 'users/registrations#new', as: :unauthenticated_root
-  end
 
   resources :rooms, only: [:index, :show]
 
