@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <p>
+    YourName: <%= current_user.name %>
+  </p>
+<% end %>
+
+<h2>Chat Room</h2>
+
+<div class="message">
+  <%= render partial: 'rooms/messages', locals: { messages: @messages} %>
+</div>
+
+<div id="add-message"></div>
+
+<!-- 投稿フォーム -->
+<input type="text" data-behavior="room_speaker" data-user=<%= current_user.id %>>
