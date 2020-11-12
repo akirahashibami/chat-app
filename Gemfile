@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery-rails'
 gem 'pry-byebug', group: :development
+gem 'slim-rails'
+gem 'html2slim'
+gem 'rails-i18n'

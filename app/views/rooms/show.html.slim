@@ -1,0 +1,10 @@
+h2 id="user-chat-room" data-room="#{@room.id}"
+  = @user.name
+  |  さんとのチャット
+- @messages.each do |message|
+  p
+    = message.message
+#add-message
+input[type="text"
+      data-user="#{current_user.id}"
+      data-behavior="room_speaker"]
