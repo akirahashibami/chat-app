@@ -67,3 +67,8 @@ gem 'pry-byebug', group: :development
 gem 'slim-rails'
 gem 'html2slim'
 gem 'rails-i18n'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
