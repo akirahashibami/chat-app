@@ -8,9 +8,9 @@ h2
 .message
   = render partial: 'rooms/messages', locals: { messages: @messages}
 #add-message
-  input[type="text"
-        data-behavior="room_speaker"
-        data-user="#{current_user.id}"]
+input[type="text"
+      data-behavior="room_speaker"
+      data-user="#{current_user.id}"]
 .follow-wraper
   .all-user
     h4 ユーザー 一覧
