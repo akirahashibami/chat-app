@@ -1,4 +1,25 @@
-h1
-  | User#show
-p
-  | Find me in app/views/user/show.html.erb
+.user-show
+  .user-show__explanation
+    p お互いがフォローしている状態の場合チャットができるようになります
+  .user-show__follow-wrapper
+    .following-user
+      h4 フォロー中ユーザー
+      ul
+        - @followings.each do |f|
+          - if current_user.followed_by?(f)
+            li
+              = f.name
+              = link_to "チャットルームへ", room_path(f)
+          - else
+            li
+              = f.name
+    .followed-user
+      h4 あなたをフォローしているユーザー
+      ul
+        - @followers.each do |f|
+          li
+            = f.name
+            - if f.followed_by?(current_user)
+              = link_to "フォローを外す", user_relationship_path(f.id), method: :delete
+            - else
+              = link_to "フォローする", user_relationships_path(f.id), method: :post

@@ -1,0 +1,8 @@
+.current_user_data
+  .current_user_data__groups
+  .current_user_data__friends
+    p 友だち
+    - mutual_follow.each do |mf|
+      .current_user_data__friends--list
+        = link_to "#{mf.name}", room_path(mf.id)
+  .current_user_data__favorite-rooms

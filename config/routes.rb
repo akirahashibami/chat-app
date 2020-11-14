@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :rooms, only: [:index, :show]
+  resources :rooms, only: [:index, :show, :create]
+
+  get 'rooms/:id/group' => 'rooms#group', as: 'group'
 
   # ユーザー機能
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :relationships,   only: [:create, :destroy]
     get :follows,   on: :member
     get :followers, on: :member

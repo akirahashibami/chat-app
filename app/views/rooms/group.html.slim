@@ -1,18 +1,14 @@
-.room-show
-  .room-show__name
+.room-group
+  .room-group__name
     h4 id="user-chat-room" data-room="#{@room.id}"
-      - if @room.name.present?
-        = @room.name
-      - else
-        = @user.name
-        | さんとのチャット
-  .room-show__messages
+      = @room.name
+  .room-group__messages
     - @messages.each do |message|
-      .room-show__messages--message
+      .room-group__messages--message
         = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
         = message.message
     #add-message
-  .room-show__form
+  .room-group__form
     input[type="text"
           data-user="#{current_user.id}"
           data-behavior="room_speaker"]

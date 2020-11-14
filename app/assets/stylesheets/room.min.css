@@ -1,1 +1,1 @@
-.follow-wraper{display:flex;justify-content:space-between}
+.room-index{height:100vh;display:flex}.room-index__open-talks .open-talks__data{display:flex;list-style:none;font-size:.75rem}.room-index__open-talks .open-talks__data--create-time{margin-right:20px}.room-index__open-talks .create-room input{border:1px solid #888;border-radius:2px}.room-index__open-talks .create-room input .open-talk-submit{margin-left:10px}
