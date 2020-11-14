@@ -2,7 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.follow-wraper{
+// index
+.room-index{
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
+
+  &__open-talks{
+
+    .open-talks{
+
+      &__data{
+        display: flex;
+        list-style: none;
+        font-size: .75rem;
+
+        &--create-time{
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .create-room{
+      input{
+        border: 1px solid #888;
+        border-radius: 2px;
+
+        .open-talk-submit{
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }

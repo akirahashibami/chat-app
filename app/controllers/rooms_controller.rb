@@ -1,12 +1,20 @@
 class RoomsController < ApplicationController
+
   def index
-    @messages = Message.where(room_id: nil)
-    # 自分以外のユーザー一覧
-    @users = User.where.not(id: current_user.id)
-    # フォロー中ユーザー
-    @followings = current_user.followings
-    # フォローされているユーザー
-    @followers = current_user.followers
+    @room = Room.new
+    @rooms = Room.where.not(name: nil)
+    @mutual_follow = current_user.followings & current_user.followers
+  end
+
+  def create
+    @room = Room.create(room_params)
+    Entry.create(user_id: current_user.id, room_id: @room.id)
+    redirect_to group_path(@room.id)
+  end
+
+  def group
+    @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 
   def show
@@ -32,6 +40,12 @@ class RoomsController < ApplicationController
       end
     end
     @messages = @room.messages
+  end
+
+  private
+
+  def room_params
+     params.require(:room).permit(:name, :user_id)
   end
 
 end
