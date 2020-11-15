@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @rooms = Room.where.not(name: nil)
     @mutual_follow = current_user.followings & current_user.followers
+    @users = User.where.not(id: current_user.id)
   end
 
   def create
@@ -28,7 +29,8 @@ class RoomsController < ApplicationController
           if cr.room_id == ar.room_id && Room.find_by(id: cr.room_id).users.ids.size == 2
             @is_room = true
             @room = Room.find_by(id: cr.room_id)
-            @messages = @room.messages
+            @messages = @room.messages.last(10)
+            @messages_all = @room.messages
           end
         end
       end
@@ -39,7 +41,6 @@ class RoomsController < ApplicationController
         Entry.create(user_id: params[:id].to_i, room_id: @room.id)
       end
     end
-    @messages = @room.messages
   end
 
   private
