@@ -1,44 +1,17 @@
-- if user_signed_in?
-  = link_to "ログアウト", destroy_user_session_path, method: :delete
-  p
-    |  YourName:
-    = current_user.name
-h2
-  | All Chats
-.message
-  = render partial: 'rooms/messages', locals: { messages: @messages}
-#add-message
-  input[type="text"
-        data-behavior="room_speaker"
-        data-user="#{current_user.id}"]
-.follow-wraper
-  .all-user
-    h4 ユーザー 一覧
-    - @users.each do |user|
-      ul
-        li
-          = user.name
-          - if user.followed_by?(current_user)
-            span フォロー済み
-          - else
-            span
-              = link_to "フォローする", user_relationships_path(user.id), method: :post
-  .following-user
-    h4 フォロー中ユーザー
-    ul
-      - @followings.each do |f|
-        - if current_user.followed_by?(f)
-          li
-            = f.name
-            = link_to "チャットルームへ", room_path(f)
-        - else
-          li
-            = f.name
-  .followed-user
-    h4 あなたをフォローしているユーザー
-    ul
-      - @followers.each do |f|
-        li
-          = f.name
-          span
-            = link_to "フォローする", user_relationships_path(f.id), method: :post
+.room-index
+  = render partial: "users/user_detalis"
+  = render partial: "rooms/current_user_data", locals: { mutual_follow: @mutual_follow}
+  .room-index__open-talks
+    .open-talks
+      p オープントークルーム一覧
+      - @rooms.each do |room|
+        li.open-talks__data
+          .open-talks__data--create-time = room.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          .open-talks__data--room-name = link_to room.name, group_path(room.id)
+    .create-room
+      p オープントークルームを作る
+      = form_with model: @room, method: :post, local: true do |f|
+        = f.text_field :name
+        = f.submit "GO!", class: "open-talk-submit"
+  / .room-index__user-direct
+  /   = link_to "友達とのチャットを始める", user_path(current_user.id)

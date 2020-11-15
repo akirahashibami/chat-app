@@ -1,0 +1,28 @@
+#room-group
+  .room-show
+    .room-show__name
+      h4 id="user-chat-room" data-room="#{@room.id}"
+        - if @room.name.present?
+          = @room.name
+        - else
+          = @user.name
+          | さんとのチャット
+    .room-show__messages
+      - @messages.each do |message|
+        .room-show__messages--message
+          .message-name
+            .message-name__name = message.user.name
+            .message-name__time = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          .message-contents
+            = message.message
+      #add-message
+    .room-show__form
+      .form
+        textarea[type="text"
+              data-user="#{current_user.id}"
+              data-behavior="room_speaker"
+              rows="3"
+              placeholder="メッセージを入力"]
+    .room-show__link
+      .room-show__link--top
+        = link_to "トップへ戻る", rooms_path

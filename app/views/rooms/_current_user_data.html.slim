@@ -1,0 +1,35 @@
+.current_user_data
+  .current_user_data__groups
+    .current_user_data__groups--tab
+      span.fas.fa-object-group
+      span 参加中グループ
+    .current_user_data__groups--group.is-close
+      span 現在開発中
+
+  .current_user_data__friends
+    .current_user_data__friends--tab
+      span.fas.fa-user-friends
+      span 友だち
+    .current_user_data__friends--list.is-close
+      - mutual_follow.each do |mf|
+        .list
+          li
+            span.name = mf.name
+            = link_to "チャットルームへ", room_path(mf.id)
+
+  .current_user_data__favorite-rooms
+    .current_user_data__favorite-rooms--tab
+      span.far.fa-star
+      span お気に入り
+    .current_user_data__favorite-rooms--list.is-close
+      span 現在開発中
+
+  .current_user_data__users
+    p ユーザー一覧
+    - @users.each do |user|
+      .users-list
+        li
+          = user.name
+          - if user.followed_by?(current_user)
+          - else
+            = link_to "フォローする", user_relationships_path(user.id), method: :post

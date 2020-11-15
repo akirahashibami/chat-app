@@ -67,3 +67,15 @@ gem 'pry-byebug', group: :development
 gem 'slim-rails'
 gem 'html2slim'
 gem 'rails-i18n'
+gem 'font-awesome-sass'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
+# capistrano
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'

@@ -6,7 +6,7 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    follow = current_user.active_relationships.find_by(follower_id: parmas[:user_id])
+    follow = current_user.active_relationships.find_by(follower_id: params[:user_id])
     follow.destroy
     redirect_back(fallback_location: rooms_path)
   end
