@@ -14,6 +14,9 @@
  *= require_self
  */
 
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
  /*!
   * ress.css • v2.0.4
   * MIT License
@@ -299,12 +302,60 @@
  }
 
 
+
+
+
+
+.is-close{
+  display: none;
+}
+
  .user-detalis{
    width: 90px;
    background-color: #222;
  }
 
- .current_user_data{
-   width: 300px;
-   background-color: #999;
- }
+.current_user_data{
+  width: 300px;
+  background-color: #bbb;
+  padding: 15px;
+  overflow-y: scroll;
+
+  &__groups{
+    padding: 15px 0;
+
+    &--tab{
+      cursor: pointer;;
+    }
+  }
+
+  &__friends{
+    padding: 15px 0;
+
+    &--tab{
+      cursor: pointer;
+    }
+
+    &--list{
+
+      .list{
+        padding-top: 3px;
+
+        li{
+          list-style: none;
+          font-size: .75rem;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  &__favorite-rooms{
+    padding: 15px 0;
+
+    &--tab{
+      cursor: pointer;
+    }
+  }
+}

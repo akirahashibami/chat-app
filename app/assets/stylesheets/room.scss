@@ -34,3 +34,84 @@
     }
   }
 }
+
+
+
+// room-show.group
+#room-group,
+#room-show{
+  background-color: #444;
+  height: 100vh;
+
+  .room-show{
+    width: 80%;
+    height: 100vh;
+    overflow-y: scroll;
+    margin: 0 auto;
+    background-color: #fff;
+
+    &__name{
+      padding: 10px;
+      color: #999;
+    }
+
+    &__messages{
+      padding: 0 10px 5px 10px;
+
+      &--ps{
+        text-align: center;
+        font-size: .7rem;
+        background: #eee;
+        margin: 8px 0;
+
+        p{
+          padding: 3px 0;
+        }
+      }
+
+      &--message{
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 12px;
+
+        .message-name{
+          display: flex;
+          justify-content: space-between;
+
+          &__name{
+            color: #777;
+            font-size: .85rem;
+          }
+          &__time{
+            font-size: .5rem;
+            line-height: 20px;
+          }
+        }
+        .message-contents{
+          font-size: .9rem;
+          padding: 6px 0 ;
+        }
+      }
+    }
+
+    &__form{
+      margin-bottom: 30px;
+      .form{
+        width: 80%;
+        margin: 0 auto;
+
+        textarea{
+          width: 100%;
+          border: 1px solid #ccc;
+          outline: none;
+        }
+      }
+    }
+
+    &__link{
+      margin-bottom: 30px;
+      &--top{
+        text-align: center;
+      }
+    }
+  }
+}
