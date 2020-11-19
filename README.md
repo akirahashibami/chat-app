@@ -17,7 +17,7 @@ railsのバージョンが5と6では書き方が変わるようです
 
 ## ER図
 
-<img width="874" alt="スクリーンショット 2020-11-11 14 15 52" src="https://user-images.githubusercontent.com/60842603/98896771-1d28e300-24ed-11eb-95a7-b72f5a9b3f36.png">
+<img width="568" alt="スクリーンショット 2020-11-19 17 27 20" src="https://user-images.githubusercontent.com/60842603/99640653-89c35500-2a8c-11eb-968c-a1d5f3c1afee.png">
 
 ## 機能
 
