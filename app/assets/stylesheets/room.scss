@@ -101,6 +101,14 @@
         border-bottom: 1px solid #ddd;
         margin-bottom: 12px;
 
+        .message-image{
+          float: left;
+          img{
+            width: 50px;
+            height: 50px;
+          }
+        }
+
         .message-name{
           display: flex;
           justify-content: space-between;
