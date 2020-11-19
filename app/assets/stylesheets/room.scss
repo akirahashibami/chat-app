@@ -8,21 +8,33 @@
   display: flex;
 
   &__open-talks{
+    width: 100%;
+    overflow-y: scroll;
 
     .open-talks{
 
-      &__data{
-        display: flex;
-        list-style: none;
-        font-size: .75rem;
+      &__index{
+        margin: 0 auto 5px;
+        border-radius: 5px;
+        padding: 3px 0;
+        border: 2px dotted #f2cca7;
+        background-color: #f5e0cb;
+        width: 95%;
 
-        &--create-time{
-          margin-right: 20px;
+        &--data{
+          display: flex;
+          list-style: none;
+          font-size: .75rem;
+
+          .create-time{
+            margin-right: 20px;
+          }
         }
       }
     }
 
     .create-room{
+      padding: 15px;
       input{
         border: 1px solid #888;
         border-radius: 2px;
@@ -30,6 +42,13 @@
         .open-talk-submit{
           margin-left: 10px;
         }
+      }
+    }
+
+    .open-talks{
+      p{
+        padding-left: 15px;
+        margin-bottom: 8px;
       }
     }
   }
@@ -40,7 +59,8 @@
 // room-show.group
 #room-group,
 #room-show{
-  background-color: #444;
+  background-image: image-url("/assets/sangaku.jpg");
+  background-size: cover;
   height: 100vh;
 
   .room-show{
@@ -52,7 +72,15 @@
 
     &__name{
       padding: 10px;
+      margin: 20px 0;
       color: #999;
+      display: flex;
+      justify-content: space-between;
+
+      &--favorite{
+        font-size: .8rem;
+        color: orange;
+      }
     }
 
     &__messages{
@@ -89,6 +117,11 @@
         .message-contents{
           font-size: .9rem;
           padding: 6px 0 ;
+
+          p{
+            // エンターとかの改行をHTMLに反映させるCSS
+            white-space: pre-wrap;
+          }
         }
       }
     }
@@ -103,6 +136,11 @@
           width: 100%;
           border: 1px solid #ccc;
           outline: none;
+          font-size: .8rem;
+        }
+
+        textarea::placeholder{
+          font-size: .8rem;
         }
       }
     }

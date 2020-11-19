@@ -1,23 +1,24 @@
 .room-index
   = render partial: "users/user_detalis"
-  = render partial: "rooms/current_user_data", locals: { mutual_follow: @mutual_follow}
+  = render partial: "rooms/current_user_data", locals: { mutual_follow: @mutual_follow, favorite_rooms: @favorite_rooms}
   .room-index__open-talks
     .create-room
-      p オープントークルームを作る
+      p オープントークを作る
       = form_with model: @room, method: :post, local: true do |f|
         = f.text_field :name
         = f.submit "GO!", class: "open-talk-submit"
     .open-talks
-      p オープントークルーム一覧
-      - @id = 1
-      - @rooms.each do |room|
-        li.open-talks__data
-          .open-talks__data--create-time
-            strong
-              = @id
-              | : 
-            = room.created_at.strftime("%Y-%m-%d %H:%M:%S")
-          .open-talks__data--room-name = link_to room.name, group_path(room.id)
-        - @id += 1
+      p オープントーク一覧
+      .open-talks__index
+        - @id = 1
+        - @rooms.each do |room|
+          li.open-talks__index--data
+            .create-time
+              strong
+                = @id
+                | : 
+              = room.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            .room-name = link_to room.name, group_path(room.id)
+          - @id += 1
   / .room-index__user-direct
   /   = link_to "友達とのチャットを始める", user_path(current_user.id)

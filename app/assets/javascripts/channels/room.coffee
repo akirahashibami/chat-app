@@ -15,11 +15,17 @@ $ ->
       @perform 'speak', {message: message, user: user}
 
   # チャットを送る
-  $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-    # return(Enter)が押された時
-    if event.keyCode is 13
-      #channel speakへ、event.target.valueを引数に
-      App.room.speak event.target.value, $('[data-user]').attr('data-user')
-      # inputの中身を空に
-      event.target.value = ''
-      event.preventDefault()
+  $(document).on 'keydown', '[data-behavior~=room_speaker]', (e) ->
+    # ctrl(command) + enter(return)が押された時
+    if ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) && e.keyCode == 13
+        # テキストエリアに何もなければアラート
+      if e.target.value == ''
+        alert "何か入力して下さい"
+        e.target.value = ''
+        e.preventDefault()
+      else
+        #channel speakへ、event.target.valueを引数に
+        App.room.speak e.target.value, $('[data-user]').attr('data-user')
+        # inputの中身を空に
+        e.target.value = ''
+        e.preventDefault()

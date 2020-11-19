@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
     @rooms = Room.where.not(name: nil).order(created_at: :desc).limit(50)
     @mutual_follow = current_user.followings & current_user.followers
     @users = User.where.not(id: current_user.id)
+    @favorite_rooms = current_user.favorite_rooms
   end
 
   def create

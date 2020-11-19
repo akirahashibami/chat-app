@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :rooms, only: [:index, :show, :create]
+  resources :rooms, only: [:index, :show, :create] do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   get 'rooms/:id/group' => 'rooms#group', as: 'group'
 

@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :entries
   has_many :rooms, through: :entries
+  has_many :favorites
+  # favorite_roomsという名前でユーザーのお気に入り一覧を取得できるようにする
+  has_many :favorite_rooms, through: :favorites, source: :room
 
   # フォロー・フォロワーの情報を集める
   # has_many :relatinshipだと２通り書かなくてはならず名前被りが起こるので中間テーブル名を再定義する

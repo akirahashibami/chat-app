@@ -20,9 +20,12 @@
   .current_user_data__favorite-rooms
     .current_user_data__favorite-rooms--tab
       span.far.fa-star
-      span お気に入り
+      span お気に入りオープントーク
     .current_user_data__favorite-rooms--list.is-close
-      span 現在開発中
+      - favorite_rooms.each do |fr|
+        .list
+          span.link = link_to group_path(fr.id) do
+            span.name = fr.name
 
   .current_user_data__users
     p ユーザー一覧

@@ -1,12 +1,18 @@
 #room-group
   .room-show
     .room-show__name
-      h4 id="user-chat-room" data-room="#{@room.id}"
+      h3 id="user-chat-room" data-room="#{@room.id}"
         - if @room.name.present?
           = @room.name
         - else
           = @user.name
           | さんとのチャット
+      .room-show__name--favorite
+        - if @room.favorited_by?(current_user)
+          p お気に入りルーム！
+        - else
+          = link_to room_favorites_path(@room.id), method: :post do
+            | ☆ルームをお気に入り登録☆
     .room-show__messages
       - @messages.each do |message|
         .room-show__messages--message
@@ -14,7 +20,7 @@
             .message-name__name = message.user.name
             .message-name__time = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
           .message-contents
-            = message.message
+            p = message.message
       #add-message
     .room-show__form
       .form
@@ -22,7 +28,8 @@
               data-user="#{current_user.id}"
               data-behavior="room_speaker"
               rows="3"
-              placeholder="メッセージを入力"]
+              placeholder="メッセージを入力
+                           (ctrl+enter / command+return で送信)"]
     .room-show__link
       .room-show__link--top
         = link_to "トップへ戻る", rooms_path
