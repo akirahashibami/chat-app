@@ -7,12 +7,13 @@
         - else
           = @user.name
           | さんとのチャット
-      .room-show__name--favorite
-        - if @room.favorited_by?(current_user)
-          p お気に入りルーム！
-        - else
-          = link_to room_favorites_path(@room.id), method: :post do
-            | ☆ルームをお気に入り登録☆
+      - if guest_user?(current_user)
+        .room-show__name--favorite
+          - if @room.favorited_by?(current_user)
+            p お気に入りルーム！
+          - else
+            = link_to room_favorites_path(@room.id), method: :post do
+              | ☆ルームをお気に入り登録☆
     .room-show__messages
       - @messages.each do |message|
         .room-show__messages--message
