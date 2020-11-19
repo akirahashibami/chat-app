@@ -4,4 +4,6 @@ class Message < ApplicationRecord
 
   belongs_to :user
   belongs_to :room, optional: true
+
+  validates :message, presence: { message: 'を入力してください'}, length: { maximum: 128 }
 end

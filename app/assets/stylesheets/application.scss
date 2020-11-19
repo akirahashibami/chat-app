@@ -311,12 +311,12 @@
 }
 
  .user-detalis{
-   width: 90px;
+   min-width: 80px;
    background-color: #222;
  }
 
 .current_user_data{
-  width: 300px;
+  min-width: 280px;
   background-color: #bbb;
   padding: 15px;
   overflow-y: scroll;
@@ -346,6 +346,10 @@
           font-size: .75rem;
           display: flex;
           justify-content: space-between;
+
+          a{
+            color: #444;
+          }
         }
       }
     }
@@ -356,6 +360,19 @@
 
     &--tab{
       cursor: pointer;
+    }
+
+    &--list{
+      .list{
+        height: 18px;
+
+        .link{
+          a{
+            font-size: .65rem;
+            color: #444;
+          }
+        }
+      }
     }
   }
 }
