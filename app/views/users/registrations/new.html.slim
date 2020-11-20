@@ -2,26 +2,26 @@
   .registrations-new__title
     p ユーザー登録
   .registrations-new__form
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render "users/shared/error_messages", resource: resource
-    .form
-      .form__na
-        .form-name
-          = f.label :name
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "users/shared/error_messages", resource: resource
+      .form
+        .field
+          = f.label :name, class: "label"
            | Name
-          = f.text_field :name
-        .form-address
-          = f.label :email
+          = f.text_field :name, class: "js-input"
+        .field
+          = f.label :email, class: "label"
            | E-mail
-          = f.email_field :email
-    .form__pass
-      .password
-        = f.label :password
-          | Password (6文字以上)
-        = f.password_field :password
-      .confirmation
-        = f.label :password_confirmation
-          | Password (確認用)
-        = f.password_field :password_confirmation
-    .form-action
-      = f.submit "登録"
+          = f.email_field :email, class: "js-input"
+        .field
+          = f.label :password, class: "label"
+            | Password (6文字以上)
+          = f.password_field :password, class: "js-input"
+        .field
+          = f.label :password_confirmation, class: "label"
+            | Password (確認用)
+          = f.password_field :password_confirmation, class: "js-input"
+      .form-action
+        = f.submit "登録"
+    .registrations-new__form--back
+      = link_to "back", root_path
