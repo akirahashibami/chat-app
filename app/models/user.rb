@@ -24,8 +24,17 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
   # ===========================================================
 
+  validates :name, inclusion: { in: %w("名無しさん.com") }
+
   # Userがfollow済みかどうか判定
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(name: '名無しさん.com', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
   end
 end

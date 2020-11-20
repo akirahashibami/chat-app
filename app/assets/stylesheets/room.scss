@@ -11,7 +11,14 @@
     width: 100%;
     overflow-y: scroll;
 
+    .create-room{
+      p{
+        padding-bottom: 10px;
+      }
+    }
+
     .open-talks{
+      margin-top: 15px;
 
       &__index{
         margin: 0 auto 5px;
