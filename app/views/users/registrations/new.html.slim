@@ -1,28 +1,27 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :name
-    br
-    = f.text_field :name
-  .field
-    = f.label :email
-    br
-    = f.email_field :email
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.registrations-new
+  .registrations-new__title
+    p ユーザー登録
+  .registrations-new__form
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "users/shared/error_messages", resource: resource
+      .form
+        .field
+          = f.label :name, class: "label"
+           | Name
+          = f.text_field :name, class: "js-input"
+        .field
+          = f.label :email, class: "label"
+           | E-mail
+          = f.email_field :email, class: "js-input"
+        .field
+          = f.label :password, class: "label"
+            | Password (6文字以上)
+          = f.password_field :password, class: "js-input"
+        .field
+          = f.label :password_confirmation, class: "label"
+            | Password (確認用)
+          = f.password_field :password_confirmation, class: "js-input"
+      .form-action
+        = f.submit "登録"
+    .registrations-new__form--back
+      = link_to "back", root_path

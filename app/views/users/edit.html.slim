@@ -1,0 +1,20 @@
+.user-edit
+  .registrations-new__title
+    p ユーザー設定
+  .registrations-new__form
+    = form_with model: @user, local: true do |f|
+      .form
+        .field
+          = f.label :name
+            | 名前
+          = f.text_field :name
+        .field
+          p ユーザー画像
+          = f.label :image
+            .far.fa-file-image ファイルを選択
+          = f.file_field :image, class: "file-field"
+        img#img-prev.hidden-img
+      .form-action
+        = f.submit "更新"
+    .registrations-new__form--back
+      = link_to "back", root_path

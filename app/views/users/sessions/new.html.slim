@@ -1,14 +1,20 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email
-  .field
-    = f.label :password
-    br
-    = f.password_field :password
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.sessions-new
+  / CSSの兼ね合いで新規登録の方と兼用のクラス名とします
+  .registrations-new__title
+    p ログイン
+  .registrations-new__form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render "users/shared/error_messages", resource: resource
+      .form
+        .field
+          = f.label :email, class: "label"
+           | E-mail
+          = f.email_field :email
+        .field
+          = f.label :password, class: "label"
+            | Password (6文字以上)
+          = f.password_field :password
+      .form-action
+        = f.submit "ログイン"
+    .registrations-new__form--back
+      = link_to "back", root_path

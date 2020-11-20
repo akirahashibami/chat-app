@@ -310,10 +310,40 @@
   display: none;
 }
 
- .user-detalis{
+.user-detalis{
    min-width: 80px;
    background-color: #222;
- }
+
+  &__user{
+     margin-top: 20px;
+
+    a{
+      width: 50px;
+      height: 50px;
+      display: block;
+      font-size: 1.3rem;
+      background-color: #fff;
+      margin:0 auto;
+      text-align: center;
+      border-radius: 8px;
+      border: 5px solid #70cbff;
+      text-decoration: none;
+      line-height: 35px;
+    }
+  }
+
+  &__logout{
+    margin: 0 auto;
+
+    a{
+      display: block;
+      color: #ccc;
+      font-size: .8rem;
+      margin: 20px 0;
+      text-align: center;
+    }
+  }
+}
 
 .current_user_data{
   min-width: 280px;

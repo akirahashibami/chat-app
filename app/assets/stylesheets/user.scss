@@ -1,3 +1,83 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 新規登録用フォーム && ログインフォーム
+.registrations-new,
+.sessions-new,
+.user-edit{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  &__title{
+    text-align: center;
+    margin-bottom: 20px;
+
+    p{
+      font-size: 1.5rem;
+      color: #777;
+    }
+  }
+
+  &__form{
+
+    input{
+      outline: none;
+      width: 100%;
+    }
+
+    .label{
+      color: #777;
+    }
+
+    .form{
+      width: 45%;
+      margin: 0 auto;
+      margin-bottom: 40px;
+
+      .field{
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 30px;
+
+        .far{
+          font-size: 1.2rem;
+          color: #555;
+          padding: 15px 10px;
+          cursor: pointer;
+        }
+
+        .file-field{
+          display: none;
+        }
+      }
+
+      img{
+        display: block;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        object-fit: cover;
+      }
+      .hidden-img{
+        display: none;
+      }
+    }
+
+    .form-action{
+      width: 25%;
+      margin: 0 auto;
+
+      input{
+        padding: 5px;
+        color: #eee;
+        background: #111;
+      }
+    }
+
+    &--back{
+      margin: 30px 0;
+      text-align: center;
+    }
+  }
+}
