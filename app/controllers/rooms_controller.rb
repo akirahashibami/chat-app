@@ -1,16 +1,39 @@
 class RoomsController < ApplicationController
 
+  def new
+    @room = Room.new
+    @followers = current_user.followings & current_user.followers
+  end
+
   def index
     @room = Room.new
-    @rooms = Room.where.not(name: nil).order(created_at: :desc).limit(50)
+    # ルームの名前がなく、グループ判定がtureのものを除くルーム(つまりオープンルーム)
+    @rooms = Room.where.not(name: nil, group_judg: true).order(created_at: :desc).limit(50)
+    # ログインユーザーが参加しているグループを集める
+    group = []
+    group_room = Room.where(group_judg: true)
+    group_room.each do |r|
+      if r.entries.find_by(user_id: current_user.id)
+        group.push(r)
+      end
+    end
+    @group = group
     @mutual_follow = current_user.followings & current_user.followers
     @users = User.where.not(id: current_user.id)
     @favorite_rooms = current_user.favorite_rooms
   end
 
   def create
-    @room = Room.create(room_params)
-    Entry.create(user_id: current_user.id, room_id: @room.id)
+    if params[:room][:user_ids].nil?
+      @room = Room.create(room_params)
+      Entry.create(user_id: current_user.id, room_id: @room.id)
+    elsif params[:room][:user_ids].present?
+      room = Room.new
+      room.group_judg = true
+      room.save
+      room.update(room_user_params)
+      @room = room
+    end
     redirect_to group_path(@room.id)
   end
 
@@ -44,10 +67,27 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit
+    @room = Room.find(params[:id])
+    @followers = current_user.followings & current_user.followers
+  end
+
+  def update
+    room = Room.find(params[:id])
+    room.update(room_user_params)
+    redirect_to(group_path(room.id))
+  end
+
   private
 
   def room_params
-     params.require(:room).permit(:name, :user_id)
+    params.require(:room).permit(:name)
+  end
+
+  def room_user_params
+    # :user_idsに常に自分のidが入るようにする
+    params[:room][:user_ids].push(current_user.id)
+    params.require(:room).permit(:name, user_ids: [])
   end
 
 end

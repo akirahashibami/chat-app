@@ -1,1 +1,24 @@
-
+.room-new-content
+  .room-new
+    .room-new__title
+      p グループルームを作る
+    .room-new__ps
+      p 招待できるユーザーは<br>お互いにフォローしているユーザーのみです。
+      p ユーザーはルームを作ってからでも招待できます。
+    .room-new__form
+      = form_with model: @room, local: true do |f|
+        .fields.room-name
+          = f.label :name, "ルームネーム"
+          = f.text_field :name
+        .fields.followers
+          span 相互フォロー中ユーザー
+          - if @followers.blank?
+            .not-followers 相互フォローのユーザーはいません。
+          - else
+            .checkbox-list
+              = f.collection_check_boxes(:user_ids, @followers, :id, :name)
+              p グループに追加するユーザーを選択して下さい。
+        .action
+          = f.submit "GO!"
+  .room-back
+    = link_to "back", rooms_path

@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
   # ===========================================================
 
-  validates :name, inclusion: { in: %w("名無しさん.com") }
+  validates :name, exclusion: { in: %w(名無しさん.com) }
 
   # Userがfollow済みかどうか判定
   def followed_by?(user)
