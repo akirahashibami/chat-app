@@ -7,13 +7,23 @@
         - else
           = @user.name
           | さんとのチャット
-      - if guest_user?(current_user)
+      - if guest_user?(current_user) || @room.group_judg == false
         .room-show__name--favorite
           - if @room.favorited_by?(current_user)
             p お気に入りルーム！
           - else
             = link_to room_favorites_path(@room.id), method: :post do
               | ☆ルームをお気に入り登録☆
+      - if @room.group_judg == true
+        .room-show__name--favorite
+          = link_to "☆参加ユーザーを追加☆", edit_room_path(@room.id)
+    - if @room.users.where.not(id: current_user.id).size >= 1
+      .room-show__join-user
+        .room-show__join-user--title
+          p このグループに参加しているユーザー
+        .room-show__join-user--list
+          - @room.users.each do |user|
+            span = user.name
     .room-show__messages
       - @messages.each do |message|
         .room-show__messages--message

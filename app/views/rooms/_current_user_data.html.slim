@@ -4,8 +4,11 @@
       span.fas.fa-object-group
       span 参加中グループ
     .current_user_data__groups--group.is-close
-      span 現在開発中
-
+      .group-list
+        - @group.each do |r|
+          li = link_to r.name, group_path(r.id)
+      .create-room
+        = link_to "グループトークを作る", new_room_path
   .current_user_data__friends
     .current_user_data__friends--tab
       span.fas.fa-user-friends

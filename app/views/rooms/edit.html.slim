@@ -1,0 +1,22 @@
+.room-edit-content
+  .room-new
+    .room-new__title
+      p グループルームの編集
+    .room-new__ps
+      p 招待できるユーザーはお互いにフォローしているユーザーのみです。
+    .room-new__form
+      = form_with model: @room, method: :patch, local: true do |f|
+        .fields.followers
+          span 相互フォロー中ユーザー
+          - if @followers.blank?
+            .not-followers 相互フォローのユーザーはいません。
+          - else
+            .checkbox-list
+              = f.collection_check_boxes(:user_ids, @followers, :id, :name)
+        .form-ps
+          p グループに追加するユーザーを選択して下さい。
+          p チェックボックスの外れているユーザーはグループから消えます。
+        .action
+          = f.submit "GO!"
+  .room-back
+    = link_to "back", rooms_path

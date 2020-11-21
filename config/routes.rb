@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-  resources :rooms, only: [:index, :show, :create] do
+  resources :rooms, only: [:new, :index, :show, :create, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
   end
 

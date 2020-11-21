@@ -357,6 +357,23 @@
     &--tab{
       cursor: pointer;;
     }
+
+    &--group{
+
+      .create-room{
+        margin: 20px 0 0 10px;
+        font-size: .8rem;
+      }
+
+      .group-list{
+        list-style: none;
+        a{
+          padding-left: 10px;
+          color: #444;
+          font-size: .75rem;
+        }
+      }
+    }
   }
 
   &__friends{

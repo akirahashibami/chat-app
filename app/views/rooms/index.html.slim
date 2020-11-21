@@ -1,7 +1,7 @@
 .room-index
   = render partial: "users/user_detalis"
   / ヘルパーにて設定のゲストユーザー判断メソッド
-  - if guest_user?(current_user)
+  - unless guest_user?(current_user)
     = render partial: "rooms/current_user_data", locals: { mutual_follow: @mutual_follow, favorite_rooms: @favorite_rooms}
   .room-index__open-talks
     - if guest_user?(current_user)

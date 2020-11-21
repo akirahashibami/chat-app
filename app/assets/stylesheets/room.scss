@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 // index
 .room-index{
   height: 100vh;
@@ -62,6 +64,90 @@
 }
 
 
+// new
+.room-new-content,
+.room-edit-content{
+
+  .room-new{
+    padding: 30px 0;
+
+    &__title{
+      text-align: center;
+      font-size: 1.5rem;
+      color: #777;
+    }
+
+    &__ps{
+      margin: 0 30%;
+      padding: 20px 0;
+      color: #222;
+      font-size: .75rem;
+    }
+
+    &__form{
+
+      .fields{
+        width: 45%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+      }
+
+      .room-name{
+        border-bottom: 1px solid #aaa;
+
+        input{
+          width: 100%;
+          outline: none;
+        }
+      }
+
+      .followers{
+        span{
+          padding-bottom: 20px;
+        }
+        .not-followers{
+          color: red;
+        }
+        .checkbox-list{
+          margin: 15px 0;
+
+          label{
+            margin-right: 10px;
+          }
+
+          p{
+            font-size: .8rem;
+            text-align: center;
+            margin: 30px 0;
+          }
+        }
+      }
+
+      .form-ps{
+        text-align: center;
+        margin: 40px 0 ;
+        p{
+          font-size: .75rem;
+        }
+      }
+
+      .action{
+        text-align: center;
+
+        input{
+          padding: 3px 20px;
+          background: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .room-back{
+    text-align: center;
+  }
+}
+
 
 // room-show.group
 #room-group,
@@ -80,13 +166,29 @@
     &__name{
       padding: 10px;
       margin: 20px 0;
-      color: #999;
+      color: #666;
       display: flex;
       justify-content: space-between;
 
       &--favorite{
         font-size: .8rem;
         color: orange;
+      }
+    }
+
+    &__join-user{
+      margin: 0 15px 30px 15px;
+
+      &--title{
+        color: #20bd30;
+      }
+
+      &--list{
+        span{
+          color: #20bd30;
+          font-size: .9rem;
+          margin: 3px 6px;
+        }
       }
     }
 
