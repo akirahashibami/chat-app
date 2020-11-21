@@ -17,7 +17,7 @@
       - if @room.group_judg == true
         .room-show__name--favorite
           = link_to "☆参加ユーザーを追加☆", edit_room_path(@room.id)
-    - if @room.users.where.not(id: current_user.id).size >= 1
+    - if @room.group_judg == true
       .room-show__join-user
         .room-show__join-user--title
           p このグループに参加しているユーザー

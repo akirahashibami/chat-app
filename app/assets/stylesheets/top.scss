@@ -5,10 +5,31 @@
 .top{
   text-align: center;
 
-  .top-tsubo{
+  .top-ika{
     text-align: center;
+    margin: 30px 0;
     img{
       width: 300px;
+      padding-bottom: 30px;
+    }
+    p{
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 2.5rem;
+      color: #35d3f2;
+    }
+  }
+
+  .top-text{
+    padding-bottom: 30px;;
+
+    p{
+      padding-bottom: 3px;
+    }
+  }
+
+  .top-login{
+    p{
+      margin-bottom: 10px;
     }
   }
 }

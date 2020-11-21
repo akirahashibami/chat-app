@@ -1,7 +1,11 @@
 .user-detalis
   .user-detalis__user
-    = link_to edit_user_path(current_user) do
-      = current_user.name[1]
+    - if guest_user?(current_user)
+      = link_to "#" do
+        = current_user.name[1]
+    - else
+      = link_to edit_user_path(current_user) do
+        = current_user.name[1]
   .user-detalis__logout
     - if user_signed_in?
       = link_to "ログアウト", destroy_user_session_path, method: :delete
