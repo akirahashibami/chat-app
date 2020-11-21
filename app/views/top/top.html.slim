@@ -1,10 +1,14 @@
 .top
-  .top-tsubo
-    img[src="./assets/tsubo.png" alt=""]
-    p 43ちゃんねる
-  p
-    = link_to "ゲストログイン", users_guest_sign_in_path, method: :post
-  p
-    = link_to "新規ユーザー登録", new_user_registration_path
-  p
-    = link_to "ログイン", new_user_session_path
+  .top-ika
+    = link_to users_guest_sign_in_path, method: :post do
+      img[src="./public/assets/ika.png" alt=""]
+    p さんかくひろば
+  .top-text
+    p ここはたくさんの人が集まるためのコミュニケーションひろばです！
+    p 上の画像をクリックですぐに始めることができます
+    p 全ての機能を使用したい場合はしたのリンクから登録をどうぞ
+  .top-login
+    p
+      = link_to "新規ユーザー登録", new_user_registration_path
+    p
+      = link_to "ログイン", new_user_session_path
