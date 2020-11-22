@@ -25,16 +25,25 @@ class RoomsController < ApplicationController
 
   def create
     if params[:room][:user_ids].nil?
-      @room = Room.create(room_params)
-      Entry.create(user_id: current_user.id, room_id: @room.id)
+      @room = Room.new(room_params)
+      if @room.save
+        Entry.create(user_id: current_user.id, room_id: @room.id)
+        redirect_to group_path(@room.id)
+      else
+        redirect_back(fallback_location: rooms_path)
+      end
     elsif params[:room][:user_ids].present?
       room = Room.new
       room.group_judg = true
-      room.save
-      room.update(room_user_params)
-      @room = room
+      if room.save
+        room.update(room_user_params)
+        @room = room
+      else
+        redirect_back(fallback_location: rooms_path)
+      end
+    else
+      redirect_to rooms_path
     end
-    redirect_to group_path(@room.id)
   end
 
   def group
@@ -63,6 +72,7 @@ class RoomsController < ApplicationController
         @room = Room.create
         Entry.create(user_id: current_user.id, room_id: @room.id)
         Entry.create(user_id: params[:id].to_i, room_id: @room.id)
+        @messages_all = @room.messages
       end
     end
   end
