@@ -152,7 +152,8 @@
 // room-show.group
 #room-group,
 #room-show{
-  // background: url(<%= asset_path('sangaku.jpg') %>);
+  background-image: url(/images/sangaku.jpg);
+  background-size: cover;
   height: 100vh;
 
   .room-show{
