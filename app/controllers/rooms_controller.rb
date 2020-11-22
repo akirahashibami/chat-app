@@ -33,9 +33,8 @@ class RoomsController < ApplicationController
         redirect_back(fallback_location: rooms_path)
       end
     elsif params[:room][:user_ids].present?
-      room = Room.new
-      room.group_judg = true
-      if room.save
+      if room = Room.create
+        room.group_judg = true
         room.update(room_user_params)
         @room = room
       else
