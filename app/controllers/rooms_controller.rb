@@ -37,6 +37,7 @@ class RoomsController < ApplicationController
         room.group_judg = true
         room.update(room_user_params)
         @room = room
+        redirect_to group_path(@room.id)
       else
         redirect_back(fallback_location: rooms_path)
       end
